@@ -12,15 +12,15 @@ class ButtonEditorWithIcon(private val icon: Icon, private val onClick: (Int) ->
     private val button = JButton()
 
     init {
-        button.icon = icon // Устанавливаем иконку
+        button.icon = icon
         button.isOpaque = true
         button.addActionListener {
             val table = button.topLevelAncestor as? JTable
             val row = table?.editingRow ?: -1
             if (row != -1) {
-                onClick(row) // Вызываем действие для удаления
+                onClick(row)
             }
-            fireEditingStopped() // Завершаем редактирование
+            fireEditingStopped()
         }
     }
 

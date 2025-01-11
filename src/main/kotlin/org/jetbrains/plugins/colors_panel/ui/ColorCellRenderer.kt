@@ -6,7 +6,6 @@ import javax.swing.JPanel
 import javax.swing.JTable
 import javax.swing.table.TableCellRenderer
 
-// Рендерер для ячейки с цветом
 class ColorCellRenderer : TableCellRenderer {
     override fun getTableCellRendererComponent(
         table: JTable,

@@ -21,18 +21,18 @@ class ColorTablePanel : JBPanel<ColorTablePanel>() {
         layout = BoxLayout(this, BoxLayout.Y_AXIS)
 
         val deleteIcon = ImageIcon(javaClass.getResource("/icons/delete-outline.png"))
-        // Таблица
+
         val table = JBTable(tableModel).apply {
             rowHeight = 30
         }
         table.columnModel.getColumn(0).cellEditor = ColorCellEditor()
         table.columnModel.getColumn(0).cellRenderer = ColorCellRenderer()
-        // Настраиваем рендерер и редактор для кнопки "Удалить"
+
         table.columnModel.getColumn(2).cellRenderer = ButtonRendererWithIcon(deleteIcon)
         table.columnModel.getColumn(2).cellEditor = ButtonEditorWithIcon(deleteIcon) { rowIndex ->
             tableModel.setValueAt(null, rowIndex, 2)
         }
-        // Кнопка добавления
+
         val addButton = JButton("Add Color").apply {
             addActionListener {
                 val parent = this.topLevelAncestor as? Component
@@ -48,7 +48,6 @@ class ColorTablePanel : JBPanel<ColorTablePanel>() {
             }
         }
 
-        // Добавление компонентов в панель
         add(JScrollPane(table))
         add(addButton)
     }
@@ -58,7 +57,6 @@ class ColorTablePanel : JBPanel<ColorTablePanel>() {
         tableModel.fireTableDataChanged()
     }
     fun getCurrentColors(): List<ColorEntry> {
-        // Возвращаем текущий список цветов из таблицы
         return colorEntries
     }
 

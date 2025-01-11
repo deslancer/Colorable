@@ -9,7 +9,7 @@ import javax.swing.table.TableCellRenderer
 class ButtonRendererWithIcon(private val iconArg: Icon) : JButton(), TableCellRenderer {
     init {
         isOpaque = true
-        this.icon = iconArg // Устанавливаем иконку
+        this.icon = iconArg
     }
 
     override fun getTableCellRendererComponent(

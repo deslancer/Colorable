@@ -20,7 +20,7 @@ class ColorCellEditor : AbstractCellEditor(), TableCellEditor {
                 parent?.let { it1 -> ColorPicker.showDialog(it1, "Choose Color", currentColor, true, null, false) }
             if (newColor != null) {
                 currentColor = newColor
-                fireEditingStopped() // Уведомляем таблицу об изменении
+                fireEditingStopped()
             }
         }
     }

@@ -6,13 +6,12 @@ import javax.swing.JButton
 import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 
-// Редактор для кнопки
 class ButtonEditor(private val onClick: (Int) -> Unit, private val tableModel: ColorTableModel) : AbstractCellEditor(),
     TableCellEditor {
     private val button = JButton("Remove").apply {
         addActionListener {
             onClick.invoke(row)
-            stopCellEditing() // Завершаем редактирование ячейки
+            stopCellEditing()
             tableModel.fireTableDataChanged()
         }
     }

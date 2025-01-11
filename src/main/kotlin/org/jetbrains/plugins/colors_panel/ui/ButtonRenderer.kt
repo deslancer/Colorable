@@ -5,7 +5,7 @@ import javax.swing.JButton
 import javax.swing.JTable
 import javax.swing.table.TableCellRenderer
 
-// Рендерер для кнопки
+
 class ButtonRenderer : JButton(), TableCellRenderer {
     init {
         text = "Remove"

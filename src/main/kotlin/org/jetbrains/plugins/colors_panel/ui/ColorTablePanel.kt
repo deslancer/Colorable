@@ -17,7 +17,6 @@ class ColorTablePanel : JBPanel<ColorTablePanel>() {
     private val colorEntries: MutableList<ColorEntry> = mutableListOf()
     private val tableModel = ColorTableModel(colorEntries)
 
-
     init {
         layout = BoxLayout(this, BoxLayout.Y_AXIS)
 

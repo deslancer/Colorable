@@ -7,7 +7,7 @@ import javax.swing.JTable
 import javax.swing.table.TableCellRenderer
 class ButtonRendererWithIcon(
     private val iconArg: Icon,
-    private val textArg: String? = null // Текст по умолчанию равен null
+    private val textArg: String? = null
 ) : JButton(), TableCellRenderer {
 
     init {
@@ -30,23 +30,4 @@ class ButtonRendererWithIcon(
         return this
     }
 }
-/*
-class ButtonRendererWithIcon(private val iconArg: Icon) : JButton(), TableCellRenderer {
-    init {
-        isOpaque = true
-        this.icon = iconArg
-    }
 
-    override fun getTableCellRendererComponent(
-        table: JTable?,
-        value: Any?,
-        isSelected: Boolean,
-        hasFocus: Boolean,
-        row: Int,
-        column: Int
-    ): Component {
-        setBorder(null)
-        background = null
-        return this
-    }
-}*/

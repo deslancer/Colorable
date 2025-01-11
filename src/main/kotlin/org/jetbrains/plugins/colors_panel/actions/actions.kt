@@ -10,8 +10,5 @@ class ShowColorTableAction : AnAction("Colorable") {
     override fun actionPerformed(event: AnActionEvent) {
         val dialog = ColorTableDialog()
         dialog.show()
-        if (dialog.isOK) {
-
-        }
     }
 }

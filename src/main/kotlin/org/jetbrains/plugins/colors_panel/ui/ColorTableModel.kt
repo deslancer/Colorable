@@ -2,6 +2,9 @@ package org.jetbrains.plugins.colors_panel.ui
 
 import org.jetbrains.plugins.colors_panel.ColorEntry
 import java.awt.Color
+import java.awt.Toolkit
+import java.awt.datatransfer.StringSelection
+import java.awt.datatransfer.Transferable
 import javax.swing.table.AbstractTableModel
 
 class ColorTableModel(private val colorEntries: MutableList<ColorEntry>) : AbstractTableModel() {
@@ -24,7 +27,7 @@ class ColorTableModel(private val colorEntries: MutableList<ColorEntry>) : Abstr
     }
 
     override fun isCellEditable(rowIndex: Int, columnIndex: Int): Boolean {
-        return columnIndex == 0 || columnIndex == 2
+        return columnIndex == 0 || columnIndex == 1 || columnIndex == 2
     }
 
     override fun setValueAt(value: Any?, rowIndex: Int, columnIndex: Int) {
@@ -40,6 +43,11 @@ class ColorTableModel(private val colorEntries: MutableList<ColorEntry>) : Abstr
                         fireTableCellUpdated(rowIndex, 0)
                         fireTableCellUpdated(rowIndex, 1)
                     }
+                }
+                1 -> {
+                    val hexValue = colorEntry.hex
+                    val clipboard: Transferable = StringSelection(hexValue)
+                    Toolkit.getDefaultToolkit().systemClipboard.setContents(clipboard, null)
                 }
                 2 -> {
                     colorEntries.removeAt(rowIndex)

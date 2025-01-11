@@ -3,7 +3,7 @@
     <id>org.jetbrains.plugins.colors_panel</id>
     <name>Colors Panel Plugin</name>
     <vendor>JetBrains</vendor>
-    
+
     <depends>com.intellij.modules.platform</depends>
 
     <!-- Локализация (если используется) -->

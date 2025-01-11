@@ -1,9 +1,11 @@
 package org.jetbrains.plugins.colors_panel.ui
 
+import com.intellij.ui.ColorPicker
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.table.JBTable
 import org.jetbrains.plugins.colors_panel.ColorEntry
 import java.awt.Color
+import java.awt.Component
 import javax.swing.BoxLayout
 import javax.swing.ImageIcon
 import javax.swing.JButton
@@ -12,13 +14,11 @@ import javax.swing.JScrollPane
 class ColorTablePanel : JBPanel<ColorTablePanel>() {
 
     private val colorEntries: MutableList<ColorEntry> = mutableListOf()
-
     private val tableModel = ColorTableModel(colorEntries)
+
 
     init {
         layout = BoxLayout(this, BoxLayout.Y_AXIS)
-        val resourceUrl = javaClass.getResource("/icons/delete-outline.png")
-        println("Resource URL: $resourceUrl")
 
         val deleteIcon = ImageIcon(javaClass.getResource("/icons/delete-outline.png"))
         // Таблица
@@ -35,9 +35,16 @@ class ColorTablePanel : JBPanel<ColorTablePanel>() {
         // Кнопка добавления
         val addButton = JButton("Add Color").apply {
             addActionListener {
-                val newColor = Color.WHITE
-                colorEntries.add(ColorEntry(newColor, "#FFFFFF"))
-                tableModel.fireTableRowsInserted(colorEntries.size - 1, colorEntries.size - 1)
+                val parent = this.topLevelAncestor as? Component
+                val newColor =
+                    parent?.let { it1 -> ColorPicker.showDialog(it1, "Choose Color", Color.WHITE, true, null, false) }
+                if (newColor != null) {
+                    val currentHex = "#%02x%02x%02x".format(
+                        newColor.red, newColor.green, newColor.blue
+                    )
+                    colorEntries.add(ColorEntry(newColor, currentHex))
+                    tableModel.fireTableRowsInserted(colorEntries.size - 1, colorEntries.size - 1)
+                }
             }
         }
 

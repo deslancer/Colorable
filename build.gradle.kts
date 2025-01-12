@@ -133,6 +133,11 @@ tasks {
     publishPlugin {
         dependsOn(patchChangelog)
     }
+
+    buildPlugin {
+        group = "build"
+        description = "Builds the plugin into a distributable ZIP file."
+    }
 }
 
 intellijPlatformTesting {

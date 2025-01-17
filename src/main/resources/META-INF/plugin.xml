@@ -8,7 +8,14 @@
 
     <!-- Локализация (если используется) -->
     <!--<resource-bundle>messages.MyBundle</resource-bundle>-->
-
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Colorable"
+                    anchor="right"
+                    factoryClass="org.jetbrains.plugins.colors_panel.ui.ColorableToolWindowFactory"
+                    icon="icons/colorable_icon.png"
+                    canCloseContents="false"
+                    canWorkInDumbMode="true"/>
+    </extensions>
     <actions>
         <action id="org.jetbrains.plugins.colors_panel.actions.ShowColorTableAction"
                 class="org.jetbrains.plugins.colors_panel.actions.ShowColorTableAction"

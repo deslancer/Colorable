@@ -16,6 +16,9 @@
                     canCloseContents="false"
                     canWorkInDumbMode="true"/>
     </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <projectService serviceImplementation="org.jetbrains.plugins.colors_panel.ProjectColorSettings"/>
+    </extensions>
     <actions>
         <action id="org.jetbrains.plugins.colors_panel.actions.ShowColorTableAction"
                 class="org.jetbrains.plugins.colors_panel.actions.ShowColorTableAction"

@@ -1,17 +1,29 @@
-import com.intellij.openapi.components.Service
-import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.State
-import com.intellij.openapi.components.Storage
+import com.intellij.configurationStore.StreamProvider
+import com.intellij.openapi.application.PathManager
+import com.intellij.openapi.components.*
 import org.jetbrains.plugins.colors_panel.ColorEntry
 
-@State(name = "ColorSettings", storages = [Storage("ColorSettings.xml")])
+/*@State(name = "ColorSettings", storages =  [Storage("\$APP_CONFIG$/colors_panel.xml")])*/
+@State(
+    name = "ProjectColorSettings",
+    storages = [Storage(".idea/color-settings-workspace.xml")]
+)
 @Service
 class ColorSettings : PersistentStateComponent<ColorSettings.State> {
     private var state = State()
+    private val storagePath: String
+        get() = PathManager.getConfigPath() + "/colors_panel.xml"
 
-    override fun getState(): State = state
+    init {
+        println("ColorSettings сохранен в: $storagePath")
+    }
+    override fun getState(): State {
+        println("Сохранение состояния: $state")
+        return state
+    }
 
     override fun loadState(state: State) {
+        println("Загрузка состояния: $state")
         this.state = state
     }
 

@@ -8,7 +8,10 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 
 class ShowColorTableAction : AnAction("Colorable") {
     override fun actionPerformed(event: AnActionEvent) {
-        val dialog = ColorTableDialog()
-        dialog.show()
+        val project = event.project
+        if (project != null) {
+            val dialog = ColorTableDialog(project)
+            dialog.show()
+        }
     }
 }
